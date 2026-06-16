@@ -1,0 +1,29 @@
+class Solution {
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+
+        // Length count karo
+        int length = 0;
+        ListNode temp = head;
+
+        while (temp != null) {
+            length++;
+            temp = temp.next;
+        }
+
+        // Agar first node delete karni ho
+        if (length == n) {
+            return head.next;
+        }
+
+        // Delete karne wali node se ek pehle tak jao
+        temp = head;
+        for (int i = 1; i < length - n; i++) {
+            temp = temp.next;
+        }
+
+        // Node remove karo
+        temp.next = temp.next.next;
+
+        return head;
+    }
+}
